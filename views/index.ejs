@@ -1,0 +1,14 @@
+<html>
+    <head></head>
+    <body>
+        Prova
+
+        <script src = "/socket.io/socket.io.js">
+            const socket = io();
+            socket.on('connection', () => {
+                console.log('Client ' + socket.connected);
+            });
+        </script>
+
+    </body>
+</html>

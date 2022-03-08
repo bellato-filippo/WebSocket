@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="socket.io/socket.io.js"></script>
+        <title>Station meteo</title>
+    </head>
+    <body>
+        <h1>Station météo</h1>
+        <div id = "temp">Temperature: </div>
+        <div id = "hum">Humidité: </div>
+
+        <script>
+
+            var socket = io();
+
+            var temperature = document.getElementById('temp');
+            var humidity = document.getElementById('hum');
+
+            socket.on('connection');
+
+            socket.on('temperature', (msg) => {
+                document.querySelector("[id = 'temp']").innerHTML = "Temperature: " + msg + "°C";
+            });
+
+            socket.on('humidity', (msg) => {
+                document.querySelector("[id = 'hum']").innerHTML = "Humidity: " + msg + "%";
+            })
+        </script>
+    </body>
+</html>

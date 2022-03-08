@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Capteur</title>
+        <script src="socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <h1>Capteurs</h1>
+        <h2>Temperature</h2>
+        <form id="form_temp" action="">
+            <input type="number" id="temp" >
+            <button>Envoyer</button>
+        </form>
+        <h2>Humidité</h2>
+        <form id="form_hum" action="">
+           <input type="number" id="hum">
+           <button>Envoyer</button> 
+        </form>
+        <script>
+            var socket = io();
+
+            socket.on('connection');
+
+            var humidity = document.getElementById('hum');
+            var form_temp = document.getElementById('form_temp');
+            var temperature = document.getElementById('temp');
+            var form_hum = document.getElementById('form_hum');
+
+            form_temp.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (temperature.value) {
+                    socket.emit('temperature', temperature.value);
+                    temperature.value = '';
+                }
+            });
+
+            form_hum.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (humidity.value) {
+                    socket.emit('humidity', humidity.value);
+                    humidity.value = '';
+                }
+            });
+        </script>
+    </body>
+</html>
